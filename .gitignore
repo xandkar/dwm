@@ -1,0 +1,7 @@
+dwm
+
+config.h
+
+drw.o
+dwm.o
+util.o
