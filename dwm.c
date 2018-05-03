@@ -1711,18 +1711,21 @@ tile(Monitor *m)
 		mw = m->nmaster ? (m->ww - (g = gappx)) * m->mfact : 0;
 	else
 		mw = m->ww;
-	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++, r = 0) {
 		if (i < m->nmaster) {
 			r = MIN(n, m->nmaster) - i;
 			h = (m->wh - my - gappx * (r - 1)) / r;
-			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), 0);
+			resize(c, m->wx + g, m->wy + my + g, mw - (2*c->bw) - g, h - (2*c->bw) - 2*g, False);
+			if (r) resizeclient(c, m->wx + g, m->wy + my + g, mw - (2*c->bw) - g, h - (2*c->bw) - 2*g);
 			my += HEIGHT(c) + gappx;
 		} else {
 			r = n - i;
 			h = (m->wh - ty - gappx * (r - 1)) / r;
-			resize(c, m->wx + mw + g, m->wy + ty, m->ww - mw - g - (2*c->bw), h - (2*c->bw), False);
+			resize(c, m->wx + mw + g, m->wy + ty + g, m->ww - mw - 2*g - (2*c->bw), h - 2*g - (2*c->bw), False);
+			if (r) resizeclient(c, m->wx + mw + g, m->wy + ty + g, m->ww - mw - 2*g - (2*c->bw), h - 2*g - (2*c->bw));
 			ty += HEIGHT(c) + gappx;
 		}
+	}
 }
 
 void
