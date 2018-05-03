@@ -1713,6 +1713,21 @@ tile(Monitor *m)
 	else
 		mw = m->ww;
 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++, r = 0) {
+
+		if (n == 1) {
+			// remove border when only one window is on the current tag
+			if (c->bw) {
+				c->oldbw = c->bw;
+				c->bw = 0;
+				r = 1;
+			}
+		} else if (!c->bw && c->oldbw) {
+			// restore border when more than one window is displayed
+			c->bw = c->oldbw;
+			c->oldbw = 0;
+			r = 1;
+		}
+
 		if (i < m->nmaster) {
 			r = MIN(n, m->nmaster) - i;
 			h = (m->wh - my - gappx * (r - 1)) / r;
