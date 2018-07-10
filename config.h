@@ -13,13 +13,16 @@ static const char col_gray2[]       = "#444444";
 /*static const char col_gray3[]       = "#bbbbbb";*/
 /*static const char col_gray4[]       = "#eeeeee";*/
 /*static const char col_cyan[]        = "#005577"; // original*/
-static const char col_green[]       = "#709080"; // zenburn
+static const char col_green1[]        = "#709080";  // zenburn green dim
+static const char col_green2[]        = "#60b48a";  // zenburn green normal
+/*static const char col_green3[]      = "#72d5a3";  // zenburn green light*/
 /*static const char col_cyan[]        = "#9fafaf"; // zenburn - too-bland */
 /*static const char col_cyan[]        = "#9ab8d7";  // "Dark Pastels" - too-bright*/
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_green, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray1, col_green,  col_green  },
+
+static const char *colors[][3] = {
+	/*               fg           bg           border   */
+	[SchemeNorm] = { col_gray1  , col_green1 , col_gray2 },
+	[SchemeSel]  = { col_green1 , col_gray1  , col_green1 },
 };
 
 /* tagging */
@@ -61,7 +64,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_green, "-sb", col_green, "-sf", col_gray1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_green1, "-sb", col_green1, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { "konsole", NULL };
 static const char *termcmd_mlterm[]  = { "mlterm", NULL };
 
