@@ -67,12 +67,16 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_green1, "-sb", col_green1, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { "konsole", NULL };
 static const char *termcmd_mlterm[]  = { "mlterm", NULL };
+static const char *file_browser[]    = { "thunar", NULL };
+static const char *web_browser[]     = { "qutebrowser", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = termcmd_mlterm } },
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = file_browser } },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web_browser } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
