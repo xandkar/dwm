@@ -69,6 +69,7 @@ static const char *termcmd[]  = { "konsole", NULL };
 static const char *termcmd_mlterm[]  = { "mlterm", NULL };
 static const char *file_browser[]    = { "thunar", NULL };
 static const char *web_browser[]     = { "qutebrowser", NULL };
+static const char *editor[]          = { "gvim", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -77,6 +78,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = termcmd_mlterm } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = file_browser } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web_browser } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = editor } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
