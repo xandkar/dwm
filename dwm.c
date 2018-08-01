@@ -1701,7 +1701,7 @@ col(Monitor *m) {
 void
 tile(Monitor *m)
 {
-	unsigned int i, n, h, r, g = 0, mw, my, ty;
+	unsigned int i, n, h, r, g = gappx, mw, my, ty;
 	Client *c;
 
 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
@@ -1711,7 +1711,7 @@ tile(Monitor *m)
 	if (n > m->nmaster)
 		mw = m->nmaster ? (m->ww - (g = gappx)) * m->mfact : 0;
 	else
-		mw = m->ww;
+		mw = m->ww - g;
 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++, r = 0) {
 
 		if (n == 1) {
