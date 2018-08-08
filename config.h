@@ -8,8 +8,13 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "terminus:size=8:weight:bold" };
 static const char dmenufont[]       =   "terminus:size=8";
-static const char col_gray1[]       = "#222222";
+/*static const char col_gray1[]     = "#222222";*/
+static const char col_gray1[]       = "#3f3f3f";
 static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#4f4f4f";
+static const char col_gray4[]       = "#5b605e";
+static const char col_gray5[]       = "#b2b2a0";
+static const char col_gray6[]       = "#dcdccc";
 /*static const char col_gray3[]       = "#bbbbbb";*/
 /*static const char col_gray4[]       = "#eeeeee";*/
 /*static const char col_cyan[]        = "#005577"; // original*/
@@ -18,11 +23,12 @@ static const char col_green2[]        = "#60b48a";  // zenburn green normal
 /*static const char col_green3[]      = "#72d5a3";  // zenburn green light*/
 /*static const char col_cyan[]        = "#9fafaf"; // zenburn - too-bland */
 /*static const char col_cyan[]        = "#9ab8d7";  // "Dark Pastels" - too-bright*/
+static const char col_yellow[]        = "#efefaf";
 
 static const char *colors[][3] = {
 	/*               fg           bg           border   */
-	[SchemeNorm] = { col_gray1  , col_green1 , col_gray2 },
-	[SchemeSel]  = { col_green1 , col_gray1  , col_green1 },
+	[SchemeNorm] = { col_gray1 , col_gray5  , col_gray2 },
+	[SchemeSel]  = { col_gray5 , col_gray1  , col_gray5 },
 };
 
 /* tagging */
@@ -64,7 +70,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_green1, "-sb", col_green1, "-sf", col_gray1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_yellow, "-sb", col_yellow, "-sf", col_gray1, NULL };
 static const char *termcmd[]         = { "st", "-e", "tmux", NULL };
 static const char *termcmd_konsole[] = { "konsole", NULL };
 static const char *termcmd_mlterm[]  = { "mlterm", NULL };
