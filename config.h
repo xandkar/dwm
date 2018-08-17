@@ -71,7 +71,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_yellow, "-sb", col_yellow, "-sf", col_gray1, NULL };
-static const char *termcmd[]         = { "st", "-e", "tmux", NULL };
+static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
+static const char *termcmd_st[]      = { "st", NULL };
 static const char *termcmd_konsole[] = { "konsole", NULL };
 static const char *termcmd_mlterm[]  = { "mlterm", NULL };
 static const char *file_browser[]    = { "thunar", NULL };
@@ -81,7 +82,8 @@ static const char *editor[]          = { "gvim", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd_st_tm } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = termcmd_st } },
 	{ MODKEY|ShiftMask,             XK_k,      spawn,          {.v = termcmd_konsole } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = termcmd_mlterm } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = file_browser } },
@@ -128,7 +130,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd_st_tm } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
