@@ -8,6 +8,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "terminus:size=8:weight:bold" };
 static const char dmenufont[]       =   "terminus:size=8";
+
+/* TODO: Give all colors discrete names, instead of postfixing gradient */
 /*static const char col_gray1[]     = "#222222";*/
 static const char col_gray1[]       = "#3f3f3f";
 static const char col_gray2[]       = "#444444";
@@ -24,11 +26,16 @@ static const char col_green2[]        = "#60b48a";  // zenburn green normal
 /*static const char col_cyan[]        = "#9fafaf"; // zenburn - too-bland */
 /*static const char col_cyan[]        = "#9ab8d7";  // "Dark Pastels" - too-bright*/
 static const char col_yellow[]        = "#efefaf";
+static const char col_black[]       = "#000000";
+static const char col_red[]         = "#ff0000";
+static const char col_white[]       = "#ffffff";
 
 static const char *colors[][3] = {
-	/*               fg           bg           border   */
-	[SchemeNorm] = { col_gray3 , col_gray5  , col_gray2 },
-	[SchemeSel]  = { col_gray5 , col_gray3  , col_gray5 },
+	/*               fg            bg           border   */
+	[SchemeNorm]   = { col_gray3 , col_gray5  , col_gray2 },
+	[SchemeSel]    = { col_gray5 , col_gray3  , col_gray5 },
+	[SchemeWarn]   = { col_black , col_yellow , col_red   },
+	[SchemeUrgent] = { col_white , col_red    , col_red   },
 };
 
 /* tagging */
