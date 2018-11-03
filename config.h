@@ -6,35 +6,35 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "terminus:size=10:weight:bold" };
+/*static const char *fonts[]          = { "terminus:size=10:weight:bold" };*/
+static const char *fonts[]          = { "terminus:size=10" };
 static const char dmenufont[]       =   "terminus:size=10";
 
-/* TODO: Give all colors discrete names, instead of postfixing gradient */
-/*static const char col_gray1[]     = "#222222";*/
-static const char col_gray1[]       = "#3f3f3f";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#4f4f4f";
-static const char col_gray4[]       = "#5b605e";
-static const char col_gray5[]       = "#b2b2a0";
-static const char col_gray6[]       = "#dcdccc";
-/*static const char col_gray3[]       = "#bbbbbb";*/
-/*static const char col_gray4[]       = "#eeeeee";*/
-/*static const char col_cyan[]        = "#005577"; // original*/
-static const char col_green1[]        = "#709080";  // zenburn green dim
-static const char col_green2[]        = "#60b48a";  // zenburn green normal
-/*static const char col_green3[]      = "#72d5a3";  // zenburn green light*/
-/*static const char col_cyan[]        = "#9fafaf"; // zenburn - too-bland */
-/*static const char col_cyan[]        = "#9ab8d7";  // "Dark Pastels" - too-bright*/
-static const char col_yellow[]        = "#efefaf";
-static const char col_black[]       = "#000000";
-static const char col_red[]         = "#ff0000";
-static const char col_white[]       = "#ffffff";
+/* The 8 terminal colors, Zenburn */
+static const char col_normal_zb_black[]   = "#2c2c2c";
+static const char col_normal_zb_red[]     = "#705050";
+static const char col_normal_zb_green[]   = "#60b48a";
+static const char col_normal_zb_yellow[]  = "#dfaf8f";
+static const char col_normal_zb_blue[]    = "#9ab8d7";
+static const char col_normal_zb_magenta[] = "#dc8cc3";
+static const char col_normal_zb_cyan[]    = "#8cd0d3";
+static const char col_normal_zb_gray[]    = "#dcdccc";
+/* The 8 bright terminal colors, Zenburn */
+static const char col_bright_zb_black[]   = "#3f3f3f";
+static const char col_bright_zb_red[]     = "#dca3a3";
+static const char col_bright_zb_green[]   = "#72d5a3";
+static const char col_bright_zb_yellow[]  = "#f0dfaf";
+static const char col_bright_zb_blue[]    = "#94bff3";
+static const char col_bright_zb_magenta[] = "#ec93d3";
+static const char col_bright_zb_cyan[]    = "#93e0e3";
+static const char col_bright_zb_white[]   = "#ffffff";
+
 static const char *colors[][3] = {
-	/*               fg            bg           border   */
-	[SchemeNorm]   = { col_gray3 , col_gray5  , col_gray2 },
-	[SchemeSel]    = { col_gray5 , col_gray3  , col_gray5 },
-	[SchemeWarn]   = { col_black , col_yellow , col_red   },
-	[SchemeUrgent] = { col_white , col_red    , col_red   },
+	/*                 fg                     bg                    border   */
+	[SchemeNorm]   = { col_normal_zb_gray   , col_normal_zb_black , col_normal_zb_black },
+	[SchemeSel]    = { col_normal_zb_yellow , col_bright_zb_black , col_normal_zb_gray  },
+	[SchemeWarn]   = { col_bright_zb_yellow , col_normal_zb_black , col_bright_zb_white },
+	[SchemeUrgent] = { col_bright_zb_red    , col_normal_zb_black , col_bright_zb_white },
 };
 static const unsigned int alphas[][3] = {
 	/*                 fg       bg    border   */
@@ -83,7 +83,16 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray3, "-nf", col_yellow, "-sb", col_yellow, "-sf", col_gray3, NULL };
+static const char *dmenucmd[] =
+    { "dmenu_run"
+    , "-m"  , dmenumon
+    , "-fn" , dmenufont
+    , "-nb" , col_normal_zb_black
+    , "-nf" , col_normal_zb_gray
+    , "-sb" , col_normal_zb_black
+    , "-sf" , col_bright_zb_green
+    , NULL
+    };
 static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
 static const char *termcmd_st[]      = { "st", NULL };
 static const char *termcmd_konsole[] = { "konsole", NULL };
