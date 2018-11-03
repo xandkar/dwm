@@ -29,13 +29,19 @@ static const char col_yellow[]        = "#efefaf";
 static const char col_black[]       = "#000000";
 static const char col_red[]         = "#ff0000";
 static const char col_white[]       = "#ffffff";
-
 static const char *colors[][3] = {
 	/*               fg            bg           border   */
 	[SchemeNorm]   = { col_gray3 , col_gray5  , col_gray2 },
 	[SchemeSel]    = { col_gray5 , col_gray3  , col_gray5 },
 	[SchemeWarn]   = { col_black , col_yellow , col_red   },
 	[SchemeUrgent] = { col_white , col_red    , col_red   },
+};
+static const unsigned int alphas[][3] = {
+	/*                 fg       bg    border   */
+	[SchemeNorm]   = { OPAQUE , 100 , OPAQUE },
+	[SchemeSel]    = { OPAQUE , 100 , OPAQUE },
+	[SchemeWarn]   = { OPAQUE , 100 , OPAQUE },
+	[SchemeUrgent] = { OPAQUE , 100 , OPAQUE },
 };
 
 /* tagging */
