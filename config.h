@@ -11,16 +11,16 @@ static const char *fonts[]          = { "terminus:size=10" };
 static const char dmenufont[]       =   "terminus:size=10";
 
 /* The 8 terminal colors, Zenburn */
-static const char col_normal_zb_black[]   = "#2c2c2c";
+static const char col_normal_zb_black[]   = "#3a3a3a";
 static const char col_normal_zb_red[]     = "#705050";
-static const char col_normal_zb_green[]   = "#60b48a";
+static const char col_normal_zb_green[]   = "#87af87";
 static const char col_normal_zb_yellow[]  = "#dfaf8f";
 static const char col_normal_zb_blue[]    = "#9ab8d7";
 static const char col_normal_zb_magenta[] = "#dc8cc3";
 static const char col_normal_zb_cyan[]    = "#8cd0d3";
 static const char col_normal_zb_gray[]    = "#dcdccc";
 /* The 8 bright terminal colors, Zenburn */
-static const char col_bright_zb_black[]   = "#3f3f3f";
+static const char col_bright_zb_black[]   = "#262626";
 static const char col_bright_zb_red[]     = "#dca3a3";
 static const char col_bright_zb_green[]   = "#72d5a3";
 static const char col_bright_zb_yellow[]  = "#f0dfaf";
@@ -38,10 +38,10 @@ static const char *colors[][3] = {
 };
 static const unsigned int alphas[][3] = {
 	/*                 fg       bg    border   */
-	[SchemeNorm]   = { OPAQUE , 100 , OPAQUE },
-	[SchemeSel]    = { OPAQUE , 100 , OPAQUE },
-	[SchemeWarn]   = { OPAQUE , 100 , OPAQUE },
-	[SchemeUrgent] = { OPAQUE , 100 , OPAQUE },
+	[SchemeNorm]   = { OPAQUE , 175 , OPAQUE },
+	[SchemeSel]    = { OPAQUE , 175 , OPAQUE },
+	[SchemeWarn]   = { OPAQUE , 175 , OPAQUE },
+	[SchemeUrgent] = { OPAQUE , 175 , OPAQUE },
 };
 
 /* tagging */
