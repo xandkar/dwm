@@ -1,14 +1,15 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int gappx     = 15;       /* gap pixel between windows */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int barpadpx  = 10;       /* padding around text in status bar */
+static const unsigned int gappx     = 50;       /* gap pixel between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 /*static const char *fonts[]          = { "terminus:size=10:weight:bold" };*/
-static const char *fonts[]          = { "terminus:size=10" };
-static const char dmenufont[]       =   "terminus:size=10";
+static const char *fonts[]          = { "terminus:size=12" };
+static const char dmenufont[]       =   "terminus:size=12";
 
 /* The 8 terminal colors, Zenburn */
 static const char col_normal_zb_black[]   = "#3a3a3a";
@@ -32,7 +33,7 @@ static const char col_bright_zb_white[]   = "#ffffff";
 static const char *colors[][3] = {
 	/*                 fg                     bg                    border   */
 	[SchemeNorm]   = { col_normal_zb_gray   , col_normal_zb_black , col_normal_zb_black },
-	[SchemeSel]    = { col_normal_zb_yellow , col_bright_zb_black , col_normal_zb_gray  },
+	[SchemeSel]    = { col_normal_zb_yellow , col_bright_zb_black , col_normal_zb_yellow  },
 	[SchemeWarn]   = { col_bright_zb_yellow , col_normal_zb_black , col_bright_zb_white },
 	[SchemeUrgent] = { col_bright_zb_red    , col_normal_zb_black , col_bright_zb_white },
 };
@@ -53,9 +54,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class         instance    title       tags mask     isfloating   monitor */
-	{ "Gimp"       , NULL,       NULL,       0     ,       1,           -1 },
-	{ "qutebrowser", NULL,       NULL,       1 << 8,       1,           -1 },
-	{ "Spotify"    , NULL,       NULL,       1 << 8,       1,           -1 },
+    /*{ "Gimp"       , NULL,       NULL,       0     ,       1,           -1 },*/
+      { "qutebrowser", NULL,       NULL,       1 << 8,       0,           -1 },
+    /*{ "Spotify"    , NULL,       NULL,       1 << 8,       1,           -1 },*/
 };
 
 /* layout(s) */
