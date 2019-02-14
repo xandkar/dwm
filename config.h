@@ -37,13 +37,6 @@ static const char *colors[][3] = {
 	[SchemeWarn]   = { col_bright_zb_yellow , col_normal_zb_black , col_bright_zb_white },
 	[SchemeUrgent] = { col_bright_zb_red    , col_normal_zb_black , col_bright_zb_white },
 };
-static const unsigned int alphas[][3] = {
-	/*                 fg       bg    border   */
-	[SchemeNorm]   = { OPAQUE , 175 , OPAQUE },
-	[SchemeSel]    = { OPAQUE , 175 , OPAQUE },
-	[SchemeWarn]   = { OPAQUE , 175 , OPAQUE },
-	[SchemeUrgent] = { OPAQUE , 175 , OPAQUE },
-};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
