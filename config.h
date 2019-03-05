@@ -1,3 +1,4 @@
+/* vim:set noexpandtab tabstop=8 shiftwidth=8: */
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -46,11 +47,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class         instance    title       tags mask     isfloating   monitor */
-    /*{ "Gimp"       , NULL,       NULL,       0     ,       1,           -1 },*/
-    /*{ "qutebrowser", NULL,       NULL,       1 << 8,       0,           -1 },*/
-    /*{ "Spotify"    , NULL,       NULL,       1 << 8,       1,           -1 },*/
-    NULL
+	/*  class          instance    title       tags mask     isfloating   monitor */
+	/*{ "Gimp",        NULL,       NULL,       0,            1,           -1 },*/
+	/*{ "qutebrowser", NULL,       NULL,       1 << 8,       0,           -1 },*/
+	/*{ "Spotify",     NULL,       NULL,       1 << 8,       1,           -1 },*/
+	NULL
 };
 
 /* layout(s) */
@@ -69,10 +70,10 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+        { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+        { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+        { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+        { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -80,15 +81,15 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] =
-    { "dmenu_run"
-    , "-m"  , dmenumon
-    , "-fn" , dmenufont
-    , "-nb" , col_normal_zb_black
-    , "-nf" , col_normal_zb_gray
-    , "-sb" , col_normal_zb_black
-    , "-sf" , col_bright_zb_green
-    , NULL
-    };
+	{ "dmenu_run"
+	, "-m"  , dmenumon
+	, "-fn" , dmenufont
+	, "-nb" , col_normal_zb_black
+	, "-nf" , col_normal_zb_gray
+	, "-sb" , col_normal_zb_black
+	, "-sf" , col_bright_zb_green
+	, NULL
+	};
 static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
 static const char *termcmd_st[]      = { "st", NULL };
 static const char *termcmd_konsole[] = { "konsole", NULL };
@@ -157,4 +158,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
