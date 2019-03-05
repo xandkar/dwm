@@ -92,7 +92,7 @@ static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
 static const char *termcmd_st[]      = { "st", NULL };
 static const char *termcmd_konsole[] = { "konsole", NULL };
 static const char *termcmd_mlterm[]  = { "mlterm", NULL };
-static const char *file_browser[]    = { "thunar", NULL };
+static const char *file_browser[]    = { "pcmanfm", NULL };
 static const char *web_browser[]     = { "qutebrowser", NULL };
 static const char *editor[]          = { "gvim", NULL };
 
