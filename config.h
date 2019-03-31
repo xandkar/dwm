@@ -2,15 +2,15 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int barpadpx  = 10;       /* padding around text in status bar */
-static const unsigned int gappx     = 50;       /* gap pixel between windows */
+static const unsigned int barpadpx  = 20;       /* padding around text in status bar */
+static const unsigned int gappx     = 40;       /* gap pixel between windows */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 /*static const char *fonts[]          = { "terminus:size=10:weight:bold" };*/
-static const char *fonts[]          = { "terminus:size=12" };
-static const char dmenufont[]       =   "terminus:size=12";
+static const char *fonts[]          = { "terminus:pixelsize=32:antialias=false:autohint=true" };
+static const char dmenufont[]       =   "terminus:pixelsize=32:antialias=false:autohint=true";
 
 /* The 8 terminal colors, Zenburn */
 static const char col_normal_zb_black[]   = "#3a3a3a";
