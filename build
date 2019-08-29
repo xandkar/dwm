@@ -1,0 +1,12 @@
+#! /bin/sh
+
+set -e
+
+make clean
+for dpi in low norm high
+do
+    rm -f ./*.o
+    ln -sf "config_dpi_${dpi}.h" 'config_dpi.h'
+    make all
+    mv dwm "dwm_dpi_${dpi}"
+done

@@ -1,4 +1,7 @@
 dwm
+dwm_dpi_low
+dwm_dpi_norm
+dwm_dpi_high
 
 drw.o
 dwm.o
