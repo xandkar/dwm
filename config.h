@@ -89,22 +89,12 @@ static const char *dmenucmd[] =
 	};
 static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
 static const char *termcmd_st[]      = { "st", NULL };
-static const char *termcmd_konsole[] = { "konsole", NULL };
-static const char *termcmd_mlterm[]  = { "mlterm", NULL };
-static const char *file_browser[]    = { "caja", NULL };
-static const char *web_browser[]     = { "qutebrowser", NULL };
-static const char *editor[]          = { "gvim", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd_st_tm } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = termcmd_st } },
-	{ MODKEY|ShiftMask,             XK_k,      spawn,          {.v = termcmd_konsole } },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = termcmd_mlterm } },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = file_browser } },
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = web_browser } },
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = editor } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
