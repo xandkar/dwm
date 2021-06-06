@@ -10,7 +10,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 #include "config_dpi.h"
 
 /* The 8 terminal colors, Zenburn */
-static const char col_normal_zb_black[]   = "#3a3a3a";
+/* #3f3f3f ends-up lokking green, so using #3a3a3a instead... */
+static const char col_normal_zb_black[]   = "#3f3f3f";
 static const char col_normal_zb_red[]     = "#705050";
 static const char col_normal_zb_green[]   = "#87af87";
 static const char col_normal_zb_yellow[]  = "#dfaf8f";
@@ -19,6 +20,8 @@ static const char col_normal_zb_magenta[] = "#dc8cc3";
 static const char col_normal_zb_cyan[]    = "#8cd0d3";
 static const char col_normal_zb_gray[]    = "#dcdccc";
 /* The 8 bright terminal colors, Zenburn */
+/* #709080 is actually green, even if it looks blackish in the remoinal, so
+ * using #262626 instead */
 static const char col_bright_zb_black[]   = "#262626";
 static const char col_bright_zb_red[]     = "#dca3a3";
 static const char col_bright_zb_green[]   = "#72d5a3";
@@ -45,10 +48,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/*  class          instance    title       tags mask     isfloating   monitor */
-	/*{ "Gimp",        NULL,       NULL,       0,            1,           -1 },*/
+	  { "Gimp",        NULL,       NULL,       0,            1,           -1 },
 	/*{ "qutebrowser", NULL,       NULL,       1 << 8,       0,           -1 },*/
 	/*{ "Spotify",     NULL,       NULL,       1 << 8,       1,           -1 },*/
-	NULL
+
+	/* Mathematica */
+	{ "Preferences",   NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
