@@ -120,6 +120,7 @@ struct Monitor {
 	int by;               /* bar geometry */
 	int mx, my, mw, mh;   /* screen size */
 	int wx, wy, ww, wh;   /* window area  */
+	int gappx;
 	unsigned int seltags;
 	unsigned int sellt;
 	unsigned int tagset[2];
@@ -201,6 +202,7 @@ static void sendmon(Client *c, Monitor *m);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
+static void setgaps(const Arg *arg);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
@@ -640,6 +642,7 @@ createmon(void)
 	m->nmaster = nmaster;
 	m->showbar = showbar;
 	m->topbar = topbar;
+	m->gappx = gappx;
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
@@ -1514,6 +1517,16 @@ setfullscreen(Client *c, int fullscreen)
 }
 
 void
+setgaps(const Arg *arg)
+{
+	if ((arg->i == 0) || (selmon->gappx + arg->i < 0))
+		selmon->gappx = 0;
+	else
+		selmon->gappx += arg->i;
+	arrange(selmon);
+}
+
+void
 setlayout(const Arg *arg)
 {
 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
@@ -1715,7 +1728,7 @@ col(Monitor *m) {
 void
 tile(Monitor *m)
 {
-	unsigned int i, n, h, r, g = gappx, mw, my, ty;
+	unsigned int i, n, h, r, g = m->gappx, mw, my, ty;
 	Client *c;
 
 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
@@ -1723,7 +1736,7 @@ tile(Monitor *m)
 		return;
 
 	if (n > m->nmaster)
-		mw = m->nmaster ? (m->ww - (g = gappx)) * m->mfact : 0;
+		mw = m->nmaster ? (m->ww - (g = m->gappx)) * m->mfact : 0;
 	else
 		mw = m->ww - g;
 	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++, r = 0) {
@@ -1744,16 +1757,16 @@ tile(Monitor *m)
 
 		if (i < m->nmaster) {
 			r = MIN(n, m->nmaster) - i;
-			h = (m->wh - my - gappx * (r - 1)) / r;
+			h = (m->wh - my - m->gappx * (r - 1)) / r;
 			resize(c, m->wx + g, m->wy + my + g, mw - (2*c->bw) - g, h - (2*c->bw) - 2*g, False);
 			if (r) resizeclient(c, m->wx + g, m->wy + my + g, mw - (2*c->bw) - g, h - (2*c->bw) - 2*g);
-			my += HEIGHT(c) + gappx;
+			my += HEIGHT(c) + m->gappx;
 		} else {
 			r = n - i;
-			h = (m->wh - ty - gappx * (r - 1)) / r;
+			h = (m->wh - ty - m->gappx * (r - 1)) / r;
 			resize(c, m->wx + mw + g, m->wy + ty + g, m->ww - mw - 2*g - (2*c->bw), h - 2*g - (2*c->bw), False);
 			if (r) resizeclient(c, m->wx + mw + g, m->wy + ty + g, m->ww - mw - 2*g - (2*c->bw), h - 2*g - (2*c->bw));
-			ty += HEIGHT(c) + gappx;
+			ty += HEIGHT(c) + m->gappx;
 		}
 	}
 }
