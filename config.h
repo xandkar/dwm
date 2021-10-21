@@ -10,30 +10,42 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 #include "config_dpi.h"
 
 /* The 8 terminal colors, Zenburn */
-static const char col_normal_zb_black[]   = "#3a3a3a";
-static const char col_normal_zb_red[]     = "#705050";
-static const char col_normal_zb_green[]   = "#87af87";
-static const char col_normal_zb_yellow[]  = "#dfaf8f";
-static const char col_normal_zb_blue[]    = "#9ab8d7";
-static const char col_normal_zb_magenta[] = "#dc8cc3";
-static const char col_normal_zb_cyan[]    = "#8cd0d3";
-static const char col_normal_zb_gray[]    = "#dcdccc";
+/* #3f3f3f ends-up lokking green, so using #3a3a3a instead... */
 /* The 8 bright terminal colors, Zenburn */
-static const char col_bright_zb_black[]   = "#262626";
-static const char col_bright_zb_red[]     = "#dca3a3";
-static const char col_bright_zb_green[]   = "#72d5a3";
-static const char col_bright_zb_yellow[]  = "#f0dfaf";
-static const char col_bright_zb_blue[]    = "#94bff3";
-static const char col_bright_zb_magenta[] = "#ec93d3";
-static const char col_bright_zb_cyan[]    = "#93e0e3";
-static const char col_bright_zb_white[]   = "#ffffff";
+/* #709080 is actually green, even if it looks blackish in the remoinal, so
+ * using #262626 instead */
+
+/*                              Zenburn  */
+#define  COL_NORMAL_ZB_BLACK    "#3f3f3f"
+#define  COL_NORMAL_ZB_RED      "#705050"
+#define  COL_NORMAL_ZB_GREEN    "#87af87"
+#define  COL_NORMAL_ZB_YELLOW   "#dfaf8f"
+#define  COL_NORMAL_ZB_BLUE     "#9ab8d7"
+#define  COL_NORMAL_ZB_MAGENTA  "#dc8cc3"
+#define  COL_NORMAL_ZB_CYAN     "#8cd0d3"
+#define  COL_NORMAL_ZB_GRAY     "#dcdccc"
+#define  COL_BRIGHT_ZB_BLACK    "#262626"
+#define  COL_BRIGHT_ZB_RED      "#dca3a3"
+#define  COL_BRIGHT_ZB_GREEN    "#72d5a3"
+#define  COL_BRIGHT_ZB_YELLOW   "#f0dfaf"
+#define  COL_BRIGHT_ZB_BLUE     "#94bff3"
+#define  COL_BRIGHT_ZB_MAGENTA  "#ec93d3"
+#define  COL_BRIGHT_ZB_CYAN     "#93e0e3"
+#define  COL_BRIGHT_ZB_WHITE    "#ffffff"
+
+static const char fg_norm [] = COL_NORMAL_ZB_GRAY;   //"#4C5153";
+static const char fg_sel  [] = COL_NORMAL_ZB_YELLOW; //"#F7F6F5";
+static const char bg_norm [] = COL_NORMAL_ZB_BLACK;  //"#F7F6F5";
+static const char bg_sel  [] = COL_BRIGHT_ZB_BLACK;  //"#4C5153";
+static const char br_norm [] = COL_NORMAL_ZB_BLACK;
+static const char br_sel  [] = COL_NORMAL_ZB_YELLOW;
 
 static const char *colors[][3] = {
-	/*                 fg                     bg                    border   */
-	[SchemeNorm]   = { col_normal_zb_gray   , col_normal_zb_black , col_normal_zb_black },
-	[SchemeSel]    = { col_normal_zb_yellow , col_bright_zb_black , col_normal_zb_yellow  },
-	[SchemeWarn]   = { col_bright_zb_yellow , col_normal_zb_black , col_bright_zb_white },
-	[SchemeUrgent] = { col_bright_zb_red    , col_normal_zb_black , col_bright_zb_white },
+	/*                 fg        bg        border  */
+	[SchemeNorm]   = { fg_norm , bg_norm , br_norm },
+	[SchemeSel]    = { fg_sel  , bg_sel  , br_sel  },
+	/*[SchemeWarn]   = { COL_BRIGHT_ZB_YELLOW , COL_NORMAL_ZB_BLACK , COL_BRIGHT_ZB_WHITE },*/
+	/*[SchemeUrgent] = { COL_BRIGHT_ZB_RED    , COL_NORMAL_ZB_BLACK , COL_BRIGHT_ZB_WHITE },*/
 };
 
 /* tagging */
@@ -45,10 +57,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/*  class          instance    title       tags mask     isfloating   monitor */
-	/*{ "Gimp",        NULL,       NULL,       0,            1,           -1 },*/
+	  { "Gimp",        NULL,       NULL,       0,            1,           -1 },
 	/*{ "qutebrowser", NULL,       NULL,       1 << 8,       0,           -1 },*/
 	/*{ "Spotify",     NULL,       NULL,       1 << 8,       1,           -1 },*/
-	NULL
+
+	/* Mathematica */
+	{ "Preferences",   NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -81,10 +95,10 @@ static const char *dmenucmd[] =
 	{ "dmenu_run"
 	, "-m"  , dmenumon
 	, "-fn" , dmenufont
-	, "-nb" , col_normal_zb_black
-	, "-nf" , col_normal_zb_gray
-	, "-sb" , col_normal_zb_black
-	, "-sf" , col_bright_zb_green
+	, "-nb" , COL_NORMAL_ZB_BLACK
+	, "-nf" , COL_NORMAL_ZB_GRAY
+	, "-sb" , COL_NORMAL_ZB_BLACK
+	, "-sf" , COL_BRIGHT_ZB_GREEN
 	, NULL
 	};
 static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
