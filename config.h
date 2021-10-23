@@ -125,8 +125,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -10 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +10 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
