@@ -1,6 +1,6 @@
 /* 3840x2160 */
-/*#define FONT "Iosevka Fixed SS09 Extended:pixelsize=20:antialias=true:autohint=true"*/
-#define FONT "Iosevka:pixelsize=20:antialias=true:autohint=true"
+/*#define FONT "Iosevka Fixed SS09 Extended:pixelsize=24:antialias=true:autohint=true"*/
+#define FONT "Iosevka:pixelsize=28:antialias=true:autohint=true"
 /*#define FONT "terminus:pixelsize=22:antialias=false:autohint=true"*/
 
 static const char *fonts[]          = { FONT };
