@@ -102,7 +102,7 @@ static const char *dmenucmd[] =
 	, "-sf" , COL_BRIGHT_ZB_GREEN
 	, NULL
 	};
-static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", NULL };
+static const char *termcmd_st_tm[]   = { "st", "-e", "tmux", "-L", "dwm", NULL };
 static const char *termcmd_st[]      = { "st", NULL };
 
 static Key keys[] = {
